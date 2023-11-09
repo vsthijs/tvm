@@ -19,34 +19,19 @@ void* vec_get_at(Vector*self, size_t index) {
     }
 }
 
-void vec_set_at(Vector *self, size_t index, void * value) {
-    if (index < self->capacity) {
-        if (self->length < index) self->length = index;
-        self->base[index] = value;
-    } else {
-        _vec_resize(self, index);
-        self->base[index] = value;
-        self->length = index;
-    }
-}
-
 void* vec_pop(Vector*self) {
-    return self->base[self->length--];
+    return self->base[--self->length];
 }
 
 void vec_push(Vector *self, void * value) {
-    if (self->length+1 < self->capacity) {
-        self->base[self->length++] = value;
-    } else {
-        _vec_resize(self, self->length+1);
-        self->base[self->length++] = value;
-    }
+    _vec_resize(self, self->length);
+    self->base[self->length++] = value;
 }
 
 void _vec_resize(Vector*self, size_t nsize) {
     if (nsize < self->capacity) {
         return;
     } else {
-        self->base = mem_realloc(self->base, nsize);
+        self->base = mem_realloc(self->base, nsize+1);
     }
 }

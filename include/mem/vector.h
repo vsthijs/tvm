@@ -17,9 +17,10 @@ void vec_deinit(Vector* self);
 // Returns NULL when index is out of range.
 void* vec_get_at(Vector* self, size_t);
 
-// Set the element at a specific position.
-void vec_set_at(Vector* self, size_t, void*);
+// Get the last value, after removing it.
 void* vec_pop(Vector* self);
+
+// Add a value at the end.
 void vec_push(Vector* self, void*);
 
 #endif
