@@ -5,8 +5,8 @@ CPPFLAGS := \
 CFLAGS := -Wall -ggdb -std=c11
 
 LDFLAGS := 
-
-SOURCE := src/**.c
+SRC_DIRS := tests
+SOURCE := src/*.c $(SRC_DIRS:%=src/%/*.c)
 OUT := tvm
 
 $(OUT): $(SOURCE)
