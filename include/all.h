@@ -2,7 +2,8 @@
 #define TVM_ALL_H 1
 
 #include "basic.h"
-#include "mem.h"
+#include "code.h"
 #include "log.h"
+#include "mem.h"
 
 #endif

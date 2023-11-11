@@ -2,7 +2,7 @@ CC := cc
 CPPFLAGS := \
 	-Iinclude
 
-CFLAGS := -Wall -ggdb
+CFLAGS := -Wall -ggdb -std=c11
 
 LDFLAGS := 
 
@@ -11,6 +11,10 @@ OUT := tvm
 
 $(OUT): $(SOURCE)
 	$(CC) -o $(OUT) $(CFLAGS) $(CPPFLAGS) $(SOURCE)
+
+test: $(SOURCE)
+	@$(CC) -o $(OUT) $(CFLAGS) $(CPPFLAGS) -DTVM_TEST $(SOURCE)
+	@./$(OUT)
 
 .PHONY: clean
 clean:

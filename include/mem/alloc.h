@@ -3,8 +3,16 @@
 
 #include "../basic.h"
 
-void* mem_alloc(size_t);
-void* mem_realloc(void*, size_t);
-void mem_free(void*);
+/// functions for managing heap memory, and detecting memory leaks
+
+// initialize the module
+void mem_init();
+
+// check for memory leaks
+bool mem_deinit(bool quiet);
+
+void *mem_alloc(size_t);
+void *mem_realloc(void *, size_t);
+void mem_free(void *);
 
 #endif
