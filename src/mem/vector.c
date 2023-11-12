@@ -1,6 +1,7 @@
-#include "mem/alloc.h"
 #include "mem/vector.h"
+#include "mem/alloc.h"
 #include <string.h>
+
 
 Vector vec_init(size_t cap, size_t sz) {
     return (Vector){0, sz, cap, mem_alloc(sz * cap)};

@@ -5,8 +5,7 @@ CPPFLAGS := \
 CFLAGS := -Wall -ggdb -std=c11
 
 LDFLAGS := 
-SRC_DIRS := tests
-SOURCE := src/*.c $(SRC_DIRS:%=src/%/*.c)
+SOURCE := $(shell find src -type f -regex ".*\.c")
 OUT := tvm
 
 $(OUT): $(SOURCE)
