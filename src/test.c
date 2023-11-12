@@ -4,6 +4,7 @@
 #include <stdio.h>
 
 #include "tests/alloc.h"
+#include "tests/vector.h"
 
 typedef struct {
     bool (*fn)();
@@ -15,9 +16,11 @@ const char *reason = "unknown";
 test_t all_tests[] = {
     {_test_alloc_0, "memory leak detection"},
     {_test_alloc_1, "incorrect memory leak"},
+    {_test_vector_0, "general vector tests"},
 };
 
 void test(test_t _test) {
+    reason = "unknown";
     printf("[test] running %s... ", _test.name);
     if (_test.fn())
         printf("ok\n");

@@ -7,10 +7,10 @@ typedef struct {
     size_t length;
     size_t elsz;
     size_t capacity;
-    void **base;
+    void *base;
 } Vector;
 
-Vector vec_init(size_t elsz);
+Vector vec_init(size_t cap, size_t sz);
 void vec_deinit(Vector *self);
 
 // Get the element at a specific position.
@@ -18,9 +18,11 @@ void vec_deinit(Vector *self);
 void *vec_get_at(Vector *self, size_t);
 
 // Get the last value, after removing it.
-void *vec_pop(Vector *self);
+bool vec_pop(Vector *self, void *dst);
 
 // Add a value at the end.
 void vec_push(Vector *self, void *);
+
+void vec_fit(Vector *self, size_t);
 
 #endif
